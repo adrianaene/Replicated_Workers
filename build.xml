@@ -1,0 +1,20 @@
+<project>
+	<property name="src.dir" location="src"/>
+
+	<target name="compile">
+		<mkdir dir="build/classes"/>
+		<javac srcdir="${src.dir}" destdir="build/classes"/>
+	</target>
+
+	<target name="jar">
+		<jar destfile="mapreduce.jar" basedir="build/classes">
+			<manifest>
+				<attribute name="Main-Class" value="ReplicatedWorkers"/>
+			</manifest>
+		</jar>
+	</target>
+
+	<target name="run">
+		<java jar="mapreduce.jar" fork="true"></java>
+	</target>
+</project>
